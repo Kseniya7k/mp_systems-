@@ -58,8 +58,8 @@ void minusProc() {
 
 void multiProc() {
 	unsigned short int x,y;
-	/* x - уменьшаемое;
-	   y - вычитаемое; */
+	/* x - 1 число;
+	   y - 2 число; */
 
 	printf("x = ");
 	scanf("%hu%*c", &x);
@@ -78,11 +78,15 @@ void divProc() {
 	printf("y = ");
 	scanf("%f%*c", &y);
 
+
 	if (y == 0) {
 		printf("Do not divide by 0\n");
+		printf("Result = 0\n");
 	}
 
-	printf("Result = %.2f\n", x/y);
+	else {
+		printf("Result = %.2f\n", x/y);
+	}
 }
 
 void powProc() {
