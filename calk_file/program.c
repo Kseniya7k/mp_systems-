@@ -2,10 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
+/*
+* Калькулятор с файлом. Автор - Плотникова К.Е.
+* Для работы программы необходимо заполнить файл source.txt входными параметрами:первый символ - операция('+', '-', '*', '/', '^', '!' - обычный калькулятор; '+', '-','*' - векторный калькулятор)
+* далее через пробел обозначение использования отдельных чисел (s) или векторов (v), далее координаты, каждое из чисел так же отделяется пробелом.
+* Результат выполнения записывается в output.txt
+*/
 float fact(float a) {
     return a == 0 ? 1 : a * fact(a - 1);
 }
 
+/*
+* функция расчета простого калькулятора
+*/
 int simple_calculator(FILE *in_file, FILE *out_file, char k) {
 	float *a = NULL, *b = NULL;
 
@@ -18,22 +27,22 @@ int simple_calculator(FILE *in_file, FILE *out_file, char k) {
 	int c;
 	switch(k) {
 		case '+':
-			fprintf(out_file, "Результат: %.2f", (*a) + (*b));
+			fprintf(out_file, "%.2f + %.2f = %.2f", (*a), (*b), (*a) + (*b));
 			break;
 		case '-':
-			fprintf(out_file, "Результат: %.2f", (*a) - (*b));
+			fprintf(out_file, "%.2f - %.2f = %.2f", (*a), (*b), (*a) - (*b));
 			break;
 		case '*':
-			fprintf(out_file, "Результат: %.2f", (*a) * (*b));
+			fprintf(out_file, "%.2f * %.2f = %.2f", (*a), (*b), (*a) * (*b));
 			break;
 		case '/':
-			fprintf(out_file, "Результат: %.2f", (*a) / (*b));
+			fprintf(out_file, "%.2f / %.2f = %.2f", (*a), (*b), (*a) / (*b));
 			break;
 		case '^':
-			fprintf(out_file, "Результат: %.2f", pow(*a, *b));
+			fprintf(out_file, "%.2f ^ %.2f = %.2f", (*a), (*b), pow(*a, *b));
 			break;
 		case '!':
-			fprintf(out_file, "Результат: %.2f", fact(*a));
+			fprintf(out_file, "%.2f! = %.2f", (*a), fact(*a));
 			break;
 	}
 
@@ -43,6 +52,9 @@ int simple_calculator(FILE *in_file, FILE *out_file, char k) {
 	return EXIT_SUCCESS;
 }
 
+/*
+* функция расчета векторного калькулятора
+*/
 float calculator_vector(FILE *in_file, FILE *out_file, char k) {
 
 	float *vector1, *vector2;
